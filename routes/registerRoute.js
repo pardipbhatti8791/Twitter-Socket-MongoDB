@@ -1,4 +1,5 @@
 const express = require('express')
+const User = require("../schema/UserSchema")
 const app = express()
 const router = express.Router()
 
@@ -19,7 +20,12 @@ router.post("/", (req, res, next) => {
 
     var payload = req.body
     if(firstName && lastName && username && email && password) {
-
+        User.findOne({
+            $or: [
+                { username: username },
+                { email: email }
+            ]
+        })
     } else {
         payload.errorMessage = "Make sure each field has a valid value"
         res.status(400).render("register", payload)
