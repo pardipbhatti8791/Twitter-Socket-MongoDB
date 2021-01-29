@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const session = require('express-session')
 const path = require('path')
 const middleware = require('./middleware')
 const mongoose = require("./database")
@@ -17,6 +18,12 @@ app.use(bodyParser.urlencoded({
     extended: false
 }))
 
+app.use(session({
+    secret: "bbq chips",
+    resave: true,
+    saveUninitialized: false
+}))
+
 // Routes
 const loginRoute = require('./routes/loginRoute')
 const registerRoute = require('./routes/registerRoute')
@@ -26,8 +33,9 @@ app.use("/register", registerRoute)
 
 app.get("/", middleware.requireLogin, (req, res, next) => {
     const payload = {
-        pageTitle: "Home"
+        pageTitle: "Home",
+        userLoggedIn:  req.session.user
     }
-    res.status(200).render("home", payload)
+    return res.status(200).render("home", payload)
 })
 
