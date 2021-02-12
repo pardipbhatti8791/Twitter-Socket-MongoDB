@@ -1,5 +1,5 @@
 body {
-    background-color: #0099ff
+    background-color: #0099ff;
 }
 
 .wrapper {
@@ -14,14 +14,15 @@ body {
     max-width: 500px;
     border: 1px solid #dedede;
     background-color: #fff;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.3);
 }
 
 form {
     display: flex;
-    flex-direction: column
+    flex-direction: column;
 }
 
 input[type="text"],
